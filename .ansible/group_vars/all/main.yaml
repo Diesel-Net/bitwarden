@@ -17,3 +17,6 @@ directories_ssl_certificates_host: '{{ directories_ssl_certificates }}'
 repo_branch: '{{ git_repository }}-{{ git_branch }}'
 proxy_router_main: '{{ repo_branch }}-main'
 proxy_router_main_strip: '{{ repo_branch }}-main-strip' 
+
+automation_uid: 1001
+automation_gid: 1001

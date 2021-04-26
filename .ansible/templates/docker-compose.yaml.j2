@@ -10,7 +10,7 @@ services:
       - /etc/localtime:/etc/localtime
       - /etc/ssl/certs/:/etc/ssl/certs/
       - {{ directories_data }}:/data/
-    user: $UID:$GID
+    user: '{{ automation_uid }}:{{ automation_gid }}'
     environment:
       - SIGNUPS_ALLOWED={{ signups_allowed | string | lower }}
     deploy:
