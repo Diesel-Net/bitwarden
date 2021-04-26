@@ -22,7 +22,6 @@ services:
         - traefik.http.routers.bitwarden-ui-https.rule=Host(`{{ proxy_domains | join('`,`') }}`)
         - traefik.http.routers.bitwarden-ui-https.entrypoints=websecure
         - traefik.http.routers.bitwarden-ui-https.tls=true
-        - traefik.http.routers.bitwarden-ui-https.tls.certresolver=step-ca
         - traefik.http.routers.bitwarden-ui-https.service=bitwarden-ui
         - traefik.http.routers.bitwarden-ui-http.rule=Host(`{{ proxy_domains | join('`,`') }}`)
         - traefik.http.routers.bitwarden-ui-https.tls.certresolver=step-ca
