@@ -1,0 +1,9 @@
+# ansible-playbook deploy.yaml -i inventories/production/hosts --vault-id ~/.tokens/master_id
+
+- hosts: tools
+  strategy: linear
+
+  tasks:
+
+    - import_role:
+        name: docker_deploy
