@@ -9,7 +9,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime
       - /etc/ssl/certs/:/etc/ssl/certs/
-      #- {{ directories_data }}:/config
+      - {{ directories_data }}:/data/
     environment:
       - PUID=1001
       - PGID=1001
