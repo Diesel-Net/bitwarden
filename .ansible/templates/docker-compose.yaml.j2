@@ -11,8 +11,7 @@ services:
       - /etc/ssl/certs/:/etc/ssl/certs/
       - {{ directories_data }}:/data/
     environment:
-      - PUID=1001
-      - PGID=1001
+      - SIGNUPS_ALLOWED={{ signups_allowed | string | lower }}
     deploy:
       labels:
         - traefik.enable=true
