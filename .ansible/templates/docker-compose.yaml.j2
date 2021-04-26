@@ -13,6 +13,7 @@ services:
     environment:
       - SIGNUPS_ALLOWED={{ signups_allowed | string | lower }}
       - ADMIN_TOKEN={{ admin_token }}
+      - DOMAIN=https://{{ proxy_domains[0] }}
     deploy:
       labels:
         - traefik.enable=true
