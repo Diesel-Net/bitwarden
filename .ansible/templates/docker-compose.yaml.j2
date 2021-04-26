@@ -5,7 +5,7 @@ services:
 
 
   main:
-    image: organizr/organizr:latest
+    image: bitwardenrs/server:latest
     volumes:
       - /etc/localtime:/etc/localtime
       - /etc/ssl/certs/:/etc/ssl/certs/
@@ -19,7 +19,6 @@ services:
         - traefik.http.services.{{ proxy_router_main }}.loadbalancer.server.port=80
         - traefik.http.routers.{{ proxy_router_main }}.tls.certresolver=step-ca
         - traefik.http.routers.{{ proxy_router_main }}.rule=Host(`{{ proxy_domains | join('`,`') }}`)
-
     networks:
       - {{ docker_network }}
 
