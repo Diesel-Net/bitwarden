@@ -48,6 +48,9 @@ steps:
         from_secret: ansible_vault_password
 
 trigger:
+  branch:
+    - stable
   event:
-    - tag
+    - push
+
 ...
