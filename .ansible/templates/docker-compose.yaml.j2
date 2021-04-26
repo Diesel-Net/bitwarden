@@ -9,7 +9,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime
       - /etc/ssl/certs/:/etc/ssl/certs/
-      - {{ directories_data }}:/config
+      #- {{ directories_data }}:/config
     environment:
       - PUID=1001
       - PGID=1001
@@ -23,8 +23,8 @@ services:
 
         - traefik.enable=true
         - traefik.docker.network=traefik
-        #- traefik.http.middlewares.redirect-https.redirectScheme.scheme=https
-        #- traefik.http.middlewares.redirect-https.redirectScheme.permanent=true
+        - traefik.http.middlewares.redirect-https.redirectScheme.scheme=https
+        - traefik.http.middlewares.redirect-https.redirectScheme.permanent=true
         - traefik.http.routers.bitwarden-ui-https.rule=Host(`{{ proxy_domains | join('`,`') }}`)
         - traefik.http.routers.bitwarden-ui-https.entrypoints=websecure
         - traefik.http.routers.bitwarden-ui-https.tls=true
