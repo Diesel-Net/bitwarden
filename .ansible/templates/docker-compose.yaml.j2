@@ -15,7 +15,6 @@ services:
       - PGID=1001
     deploy:
       labels:
-        - traefik.http.routers.{{ proxy_router_main }}.tls.certresolver=step-ca
         - traefik.enable=true
         - traefik.docker.network=traefik
         - traefik.http.middlewares.redirect-https.redirectScheme.scheme=https
@@ -23,8 +22,10 @@ services:
         - traefik.http.routers.bitwarden-ui-https.rule=Host(`{{ proxy_domains | join('`,`') }}`)
         - traefik.http.routers.bitwarden-ui-https.entrypoints=websecure
         - traefik.http.routers.bitwarden-ui-https.tls=true
+        - traefik.http.routers.bitwarden-ui-https.tls.certresolver=step-ca
         - traefik.http.routers.bitwarden-ui-https.service=bitwarden-ui
         - traefik.http.routers.bitwarden-ui-http.rule=Host(`{{ proxy_domains | join('`,`') }}`)
+        - traefik.http.routers.bitwarden-ui-https.tls.certresolver=step-ca
         - traefik.http.routers.bitwarden-ui-http.entrypoints=web
         - traefik.http.routers.bitwarden-ui-http.middlewares=redirect-https
         - traefik.http.routers.bitwarden-ui-http.service=bitwarden-ui
