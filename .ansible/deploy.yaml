@@ -5,10 +5,5 @@
 
   tasks:
 
-    - name: 'Ensure existence of configuration directory: {{ directories_files }}/config'
-      command: mkdir -p {{ directories_files }}/config
-      args:
-        warn: no
-
     - import_role:
         name: docker_deploy
