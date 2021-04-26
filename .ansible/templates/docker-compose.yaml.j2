@@ -12,6 +12,7 @@ services:
       - {{ directories_data }}:/data/
     environment:
       - SIGNUPS_ALLOWED={{ signups_allowed | string | lower }}
+      - ADMIN_TOKEN={{ admin_token }}
     deploy:
       labels:
         - traefik.enable=true
