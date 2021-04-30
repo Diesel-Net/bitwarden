@@ -17,7 +17,7 @@ services:
     deploy:
       labels:
         - traefik.enable=true
-        - traefik.docker.network=traefik
+        - traefik.docker.network={{ docker_network }}
         - traefik.http.middlewares.redirect-https.redirectScheme.scheme=https
         - traefik.http.middlewares.redirect-https.redirectScheme.permanent=true
         - traefik.http.routers.bitwarden-ui-https.rule=Host(`{{ proxy_domains | join('`,`') }}`)
