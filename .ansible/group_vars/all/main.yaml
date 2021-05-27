@@ -10,11 +10,11 @@
 # directories_ssl_certificates_file: '{{ directories_ssl_certificates }}ca-certificates.crt'
 # directories_ssl_certificates_host: '{{ directories_ssl_certificates }}'
 
-git_owner: '{{ lookup("env", "DRONE_REPO_NAMESPACE") if lookup("env", "DRONE_REPO_NAMESPACE") else "git_owner" }}'
-git_repository: '{{ lookup("env", "DRONE_REPO_NAME") if lookup("env", "DRONE_REPO_NAME") else "git_repository" }}'
-git_tag: '{{ lookup("env", "DRONE_TAG") }}'
-git_branch: '{{ "production" if git_tag else (lookup("env", "DRONE_BRANCH") if lookup("env", "DRONE_BRANCH") else "git_branch") }}'
-git_version: '{{ git_tag if git_tag else git_branch }}'
+# git_owner: '{{ lookup("env", "DRONE_REPO_NAMESPACE") if lookup("env", "DRONE_REPO_NAMESPACE") else "git_owner" }}'
+# git_repository: '{{ lookup("env", "DRONE_REPO_NAME") if lookup("env", "DRONE_REPO_NAME") else "git_repository" }}'
+# git_tag: '{{ lookup("env", "DRONE_TAG") }}'
+# git_branch: '{{ "production" if git_tag else (lookup("env", "DRONE_BRANCH") if lookup("env", "DRONE_BRANCH") else "git_branch") }}'
+# git_version: '{{ git_tag if git_tag else git_branch }}'
 
 # routers/middleware
 repo_branch: '{{ git_repository }}-{{ git_branch }}'
