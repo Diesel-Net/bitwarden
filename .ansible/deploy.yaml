@@ -4,8 +4,4 @@
   strategy: linear
   roles:
     - common
-
-  tasks:
-
-    - import_role:
-        name: docker_deploy
+    - docker_deploy
