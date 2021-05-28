@@ -1,2 +1,1 @@
-proxy_domains:
-  - bitwarden.dev.diesel.net
+proxy_domain: bitwarden.dev.diesel.net

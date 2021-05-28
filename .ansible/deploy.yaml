@@ -2,8 +2,11 @@
 
 - hosts: tools
   strategy: linear
-
   tasks:
 
-    - import_role:
+    - include_role:
+        name: common
+        tasks_from: make_data_dir
+
+    - include_role:
         name: docker_deploy
