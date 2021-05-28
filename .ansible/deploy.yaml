@@ -3,4 +3,5 @@
 - hosts: tools
   strategy: linear
   roles:
+    - common
     - docker_deploy

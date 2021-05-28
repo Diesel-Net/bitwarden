@@ -1,2 +1,0 @@
-proxy_router_main: '{{ git_repository }}-{{ git_branch }}-main'
-proxy_router_main_strip: '{{ git_repository }}-{{ git_branch }}-main-strip' 
