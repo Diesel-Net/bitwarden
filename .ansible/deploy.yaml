@@ -9,4 +9,5 @@
         tasks_from: make_data_dir
 
     - include_role:
-        name: docker_deploy
+        name: docker
+        tasks_from: stack_deploy
