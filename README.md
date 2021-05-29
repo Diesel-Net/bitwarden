@@ -1,4 +1,4 @@
-[![Build Status](https://drone-ci.hopto.org/api/badges/Diesel-Net/bitwarden/status.svg)](https://drone-ci.hopto.org/Diesel-Net/bitwarden)
+[![Build Status](https://drone.kiwi-labs.net/api/badges/Diesel-Net/bitwarden/status.svg)](https://drone.kiwi-labs.net/Diesel-Net/bitwarden)
 
 # bitwarden
 Sets up [bitwarden_rs](https://github.com/dani-garcia/bitwarden_rs) on the internal network.
