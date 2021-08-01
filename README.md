@@ -1,7 +1,7 @@
 [![Build Status](https://drone.kiwi-labs.net/api/badges/Diesel-Net/bitwarden/status.svg)](https://drone.kiwi-labs.net/Diesel-Net/bitwarden)
 
 # bitwarden
-Sets up [bitwarden_rs](https://github.com/dani-garcia/bitwarden_rs) on the internal network.
+Sets up [vaultwarden](https://github.com/dani-garcia/vaultwarden) (formerly called bitwarden_rs) on the internal network.
 
 # Notes
 - [traefik v2 labels](https://github.com/dani-garcia/bitwarden_rs/wiki/Proxy-examples#traefik-v1-labels-migrated-to-traefik-v2)
