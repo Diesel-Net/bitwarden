@@ -5,10 +5,10 @@ services:
 
 
   main:
-    image: bitwardenrs/server:latest
+    image: vaultwarden/server:1.22.2
     volumes:
       - /etc/localtime:/etc/localtime
-      - {{ ssl_cert_dir }}:/etc/ssl/certs/
+      - {{ ssl_cert_dir }}/:/etc/ssl/certs/
       - {{ data_dir }}:/data/
     environment:
       - SIGNUPS_ALLOWED={{ signups_allowed | string | lower }}
