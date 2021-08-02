@@ -2,7 +2,7 @@
 
 kind: pipeline
 type: docker
-name: development pipeline
+name: Install Bitwarden (dev)
 
 clone:
   depth: 1
@@ -31,7 +31,7 @@ trigger:
 
 kind: pipeline
 type: docker
-name: production pipeline
+name: Install bitwarden (prod)
 
 clone:
   depth: 1
