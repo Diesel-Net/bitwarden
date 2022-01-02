@@ -4,7 +4,7 @@
 [vaultwarden](https://github.com/dani-garcia/vaultwarden) (formerly named `bitwarden_rs`) on Docker Swarm
 
 
-## Manual Deployments
+## Deployments
 This application is automatically configured and deployed using Drone CI, however you may use these commands to manually deploy or test changes if needed.
 
 ### Requirements
@@ -13,6 +13,7 @@ Recommended way to install Ansible is with `pip` for `Python3.9+`. Ansible `5.0.
 pip3 install --user ansible
 ```
 
+### Steps
 1. Install Ansible Dependencies (external roles)
    ```bash
    ansible-galaxy install -r .ansible/roles/requirements.yaml -p .ansible/roles --force
