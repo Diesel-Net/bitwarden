@@ -15,7 +15,7 @@ steps:
     settings:
       playbook: .ansible/deploy.yaml
       galaxy: .ansible/roles/requirements.yaml
-      inventory: .ansible/inventory/development/hosts
+      inventory: .ansible/inventory/development
       private_key:
         from_secret: automation_id_rsa
       vault_password:
@@ -41,10 +41,12 @@ steps:
     image: plugins/ansible:3
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
+      ADMIN_TOKEN:
+        from_secret: admin_token
     settings:
       playbook: .ansible/deploy.yaml
       galaxy: .ansible/roles/requirements.yaml
-      inventory: .ansible/inventory/production/hosts
+      inventory: .ansible/inventory/production
       private_key:
         from_secret: automation_id_rsa
       vault_password:
