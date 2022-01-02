@@ -1,7 +1,9 @@
 [![Build Status](https://drone.kiwi-labs.net/api/badges/Diesel-Net/bitwarden/status.svg)](https://drone.kiwi-labs.net/Diesel-Net/bitwarden)
 
 # bitwarden
-[vaultwarden](https://github.com/dani-garcia/vaultwarden) (formerly named `bitwarden_rs`) on Docker Swarm
+Sets up bitwarden on Docker Swarm. 
+
+:warning: This configuration uses the unofficial Rust backend [vaultwarden](https://github.com/dani-garcia/vaultwarden), which was formerly called `bitwarden_rs`.
 
 
 ## Deployments
