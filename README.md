@@ -5,7 +5,7 @@
 
 
 ## Deployments
-This application is automatically configured and deployed using Drone CI, however you may use these commands to manually deploy or test changes if needed.
+This application is configured and deployed automatically using Drone CI, however there may be situations where you would prefer to configure and deploy the application manually. You will need to have the [ansible-vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html#encrypting-content-with-ansible-vault) password file configured on your machine. Please read the relevant ansible documentation on [setting a default password source](https://docs.ansible.com/ansible/latest/user_guide/vault.html#setting-a-default-password-source). If you are trying to reuse this Ansible configuration for your own purposes, then you will need to encrypt all of _your_ secrets using _your_ ansible vault password.
 
 ### Requirements
 Recommended way to install Ansible is with `pip` for `Python3.9+`. Ansible `5.0.1` was used at the time of this writing.
@@ -18,7 +18,7 @@ pip3 install --user ansible
    ```bash
    ansible-galaxy install -r .ansible/roles/requirements.yaml -p .ansible/roles --force
    ```
-2. Configure and Deploy. You will need to have the ansible-vault password file configured on your machine. Please read the relevant [ansible documentation](https://docs.ansible.com/ansible/latest/user_guide/vault.html#setting-a-default-password-source) for more information.
+2. Configure and Deploy. 
    ```bash
    ansible-playbook .ansible/deploy.yaml -i .ansible/inventory/development
    ```
