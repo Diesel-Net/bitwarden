@@ -3,7 +3,8 @@
 # bitwarden
 Sets up bitwarden on Docker Swarm. 
 
-:warning: This configuration uses the unofficial Rust backend [vaultwarden](https://github.com/dani-garcia/vaultwarden), which was formerly called `bitwarden_rs`.
+:warning: Warning!
+This configuration uses the unofficial backend [vaultwarden](https://github.com/dani-garcia/vaultwarden), formerly known as `bitwarden_rs`.
 
 
 ## Deployments
@@ -18,11 +19,11 @@ python3 -m pip install --user ansible
 ```
 
 ### Steps
-1. Install Ansible Dependencies (external roles)
+1. Install roles (dependencies).
    ```bash
    ansible-galaxy install -r .ansible/roles/requirements.yaml -p .ansible/roles --force
    ```
-2. Configure and Deploy. 
+2. Run playbook.
    ```bash
    ansible-playbook .ansible/deploy.yaml -i .ansible/inventory/development
    ```
