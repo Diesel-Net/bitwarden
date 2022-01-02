@@ -5,40 +5,31 @@ services:
 
 
   main:
-    image: vaultwarden/server:1.22.2
+    image: vaultwarden/server:1.23.1
     volumes:
-      - /etc/localtime:/etc/localtime
-      - {{ ssl_cert_dir }}/:/etc/ssl/certs/
-      - {{ data_dir }}:/data/
+      - {{ localtime_file }}:/etc/localtime
+      - {{ ssl_cert_file }}:/etc/ssl/certs/ca-certificates.crt
+      - {{ data_dir }}:/data
     environment:
       - SIGNUPS_ALLOWED={{ signups_allowed | string | lower }}
       - ADMIN_TOKEN={{ admin_token }}
-      - DOMAIN=https://{{ proxy_domain }}
+      - DOMAIN=https://{{ host }}
     deploy:
       labels:
         - traefik.enable=true
-        - traefik.docker.network={{ docker_network }}
-        - traefik.http.middlewares.redirect-https.redirectScheme.scheme=https
-        - traefik.http.middlewares.redirect-https.redirectScheme.permanent=true
-        - traefik.http.routers.bitwarden-ui-https.rule=Host(`{{ proxy_domain }}`)
-        - traefik.http.routers.bitwarden-ui-https.entrypoints=websecure
-        - traefik.http.routers.bitwarden-ui-https.tls=true
-        - traefik.http.routers.bitwarden-ui-https.service=bitwarden-ui
-        - traefik.http.routers.bitwarden-ui-http.rule=Host(`{{ proxy_domain }}`)
-        - traefik.http.routers.bitwarden-ui-https.tls.certresolver=step-ca
-        - traefik.http.routers.bitwarden-ui-http.entrypoints=web
-        - traefik.http.routers.bitwarden-ui-http.middlewares=redirect-https
-        - traefik.http.routers.bitwarden-ui-http.service=bitwarden-ui
+
+        # web interface
         - traefik.http.services.bitwarden-ui.loadbalancer.server.port=80
-        - traefik.http.routers.bitwarden-websocket-https.rule=Host(`{{ proxy_domain }}`) && Path(`/notifications/hub`)
-        - traefik.http.routers.bitwarden-websocket-https.entrypoints=websecure
-        - traefik.http.routers.bitwarden-websocket-https.tls=true
-        - traefik.http.routers.bitwarden-websocket-https.service=bitwarden-websocket
-        - traefik.http.routers.bitwarden-websocket-http.rule=Host(`{{ proxy_domain }}`) && Path(`/notifications/hub`)
-        - traefik.http.routers.bitwarden-websocket-http.entrypoints=web
-        - traefik.http.routers.bitwarden-websocket-http.middlewares=redirect-https
-        - traefik.http.routers.bitwarden-websocket-http.service=bitwarden-websocket
+        - traefik.http.routers.bitwarden-ui.rule=Host(`{{ host }}`)
+        - traefik.http.routers.bitwarden-ui.tls.certresolver=step-ca
+        - traefik.http.routers.bitwarden-ui.service=bitwarden-ui
+        
+        # websocket notifications
         - traefik.http.services.bitwarden-websocket.loadbalancer.server.port=3012
+        - traefik.http.routers.bitwarden-websocket.rule=Host(`{{ host }}`) && Path(`/notifications/hub`)
+        - traefik.http.routers.bitwarden-websocket.tls.certresolver=step-ca
+        - traefik.http.routers.bitwarden-websocket.service=bitwarden-websocket
+        
     networks:
       - {{ docker_network }}
 
