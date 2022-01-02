@@ -1,4 +1,3 @@
 signups_allowed: yes
 admin_token: "{{ lookup('env', 'ADMIN_TOKEN') }}"
-
 host: bitwarden.diesel.net
