@@ -3,7 +3,7 @@
 # bitwarden
 Sets up bitwarden on Docker Swarm. 
 
-:warning: This configuration uses the unofficial backend [vaultwarden](https://github.com/dani-garcia/vaultwarden), formerly known as `bitwarden_rs`.
+:warning: this configuration uses the unofficial backend [vaultwarden](https://github.com/dani-garcia/vaultwarden), formerly known as `bitwarden_rs` :warning:
 
 
 ## Deployments
