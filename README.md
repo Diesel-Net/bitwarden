@@ -5,7 +5,7 @@
 
 
 ## Deployments
-This application is configured and deployed automatically using [Drone CI](https://github.com/harness/drone), however there may be situations where you would prefer to configure and deploy the application manually. You will need to have the [Ansible Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html#encrypting-content-with-ansible-vault) password file configured on your machine. Please read the relevant ansible documentation on [setting a default password source](https://docs.ansible.com/ansible/latest/user_guide/vault.html#setting-a-default-password-source). If you are trying to reuse this Ansible configuration for your own purposes, then you will need to encrypt all of _your own_ secrets using _your own_ ansible vault password.
+This application is configured and deployed automatically using [Drone CI](https://github.com/harness/drone), however there may be situations where you would prefer to configure and deploy the application manually. You will need to have the [Ansible Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html#encrypting-content-with-ansible-vault) password file configured on your machine. Please read the relevant ansible documentation on [setting a default password source](https://docs.ansible.com/ansible/latest/user_guide/vault.html#setting-a-default-password-source). If you are trying to reuse this Ansible configuration for your own purposes, then you will need to encrypt all of _your own_ secrets using _your own_ Ansible Vault password.
 
 ### Requirements
 Recommended way to install Ansible is with `pip` for `Python3.9+`. Ansible `5.0.1` was used at the time of this writing.
