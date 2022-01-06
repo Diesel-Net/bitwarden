@@ -20,7 +20,7 @@ python3 -m pip install --user ansible
 ```
 
 ### Steps
-1. Install [Ansible roles](https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html) (playbook dependencies). This will download the roles defined in `.ansible/roles/requirements.yaml` and place them into `.ansible/roles`.
+1. Install [Ansible roles](https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html) (playbook dependencies). This will download the roles defined in [requirements.yaml](.ansible/roles/requirements.yaml) and place them into `.ansible/roles` for you.
    ```bash
    ansible-galaxy install -r .ansible/roles/requirements.yaml -p .ansible/roles --force
    ```
