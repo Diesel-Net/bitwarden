@@ -14,7 +14,7 @@ You will need to have the [Ansible Vault](https://docs.ansible.com/ansible/lates
 If you are trying to reuse this Ansible configuration for _your own_ purposes, then you will need to encrypt all of _your own_ secrets using _your own_ Ansible Vault password and replace those variables in the [Ansible configuration](.ansible) after forking/cloning.
 
 ### Requirements
-I recommend [installing Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible) with `pip` (globally) versus other package managers like `apt` or `brew`. It makes upgrading and using third party modules much easier.
+I recommend [installing Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible) with `pip` (globally) versus other package managers like `apt` or `brew`. It makes upgrading and using third party modules much easier. If you are on Windows, I would also recommend installing Ansible onto the WSL filesystem instead of the Windows filesytem. 
 ```bash
 python3 -m pip install --user ansible
 ```
