@@ -24,7 +24,7 @@ python3 -m pip install --user ansible
    ```bash
    ansible-galaxy install -r .ansible/roles/requirements.yaml -p .ansible/roles --force
    ```
-2. Run [Ansible playbook](https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html).
+2. Run [Ansible playbook](https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html) against the `development` inventory.
    ```bash
    ansible-playbook .ansible/deploy.yaml -i .ansible/inventories/development
    ```
