@@ -24,5 +24,5 @@ python3 -m pip install --user ansible
    ```
 2. Run playbook.
    ```bash
-   ansible-playbook .ansible/deploy.yaml -i .ansible/inventory/development
+   ansible-playbook .ansible/deploy.yaml -i .ansible/inventories/development
    ```
