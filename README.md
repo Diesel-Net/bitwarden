@@ -9,7 +9,9 @@ Sets up bitwarden on Docker Swarm.
 ## Deployments
 This application is configured and deployed automatically with [Drone CI](https://github.com/harness/drone) and [Ansible](https://github.com/ansible/ansible), however there might be situations where you would prefer to run the Ansible playbooks manually. 
 
-You will need to have the [Ansible Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html#encrypting-content-with-ansible-vault) password file configured on your machine, if there are any vaulted secrets. Please read the relevant ansible documentation on [setting a default password source](https://docs.ansible.com/ansible/latest/user_guide/vault.html#setting-a-default-password-source). If you are trying to reuse this Ansible configuration for your own purposes, then you will need to encrypt all of _your own_ secrets using _your own_ Ansible Vault password and replace those variables in the [Ansible configuration](.ansible).
+You will need to have the [Ansible Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html#encrypting-content-with-ansible-vault) password file configured on your machine, if there are any vaulted secrets. Please read the relevant ansible documentation on [setting a default password source](https://docs.ansible.com/ansible/latest/user_guide/vault.html#setting-a-default-password-source).
+
+If you are trying to reuse this Ansible configuration for _your own_ purposes, then you will need to encrypt all of _your own_ secrets using _your own_ Ansible Vault password and replace those variables in the [Ansible configuration](.ansible).
 
 ### Requirements
 I recommend [installing Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible) with `pip` (globally) versus other package managers like `apt` or `brew`. It makes upgrading and using third party modules much easier.
