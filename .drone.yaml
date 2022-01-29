@@ -15,12 +15,9 @@ steps:
     settings:
       playbook: .ansible/deploy.yaml
       galaxy: .ansible/roles/requirements.yaml
-      inventory: .ansible/inventory/development
+      inventory: .ansible/inventories/development
       private_key:
         from_secret: automation_id_rsa
-      vault_password:
-        from_secret: ansible_vault_password
-
 trigger:
   branch:
     - development
@@ -46,11 +43,9 @@ steps:
     settings:
       playbook: .ansible/deploy.yaml
       galaxy: .ansible/roles/requirements.yaml
-      inventory: .ansible/inventory/production
+      inventory: .ansible/inventories/production
       private_key:
         from_secret: automation_id_rsa
-      vault_password:
-        from_secret: ansible_vault_password
       extra_vars: version=production
 
 trigger:
