@@ -5,10 +5,10 @@ services:
 
 
   main:
-    image: vaultwarden/server:1.23.1
+    image: vaultwarden/server:1.25.2
     volumes:
-      - {{ localtime_file }}:/etc/localtime
-      - {{ ssl_cert_file }}:/etc/ssl/certs/ca-certificates.crt
+      - /etc/localtime:/etc/localtime
+      - /etc/ssl/certs/ca-certificates.crt:/etc/ssl/certs/ca-certificates.crt
       - {{ data_dir }}:/data
     environment:
       - SIGNUPS_ALLOWED={{ signups_allowed | string | lower }}
@@ -31,9 +31,9 @@ services:
         - traefik.http.routers.bitwarden-websocket.service=bitwarden-websocket
         
     networks:
-      - {{ docker_network }}
+      - {{ traefik_network }}
 
 networks:
-  {{ docker_network }}:
+  {{ traefik_network }}:
     external:
-      name: {{ docker_network }}
+      name: {{ traefik_network }}

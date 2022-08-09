@@ -1,9 +1,12 @@
 - hosts: tools
   strategy: linear
+  roles:
+    - traefik
+
   tasks:
 
     - include_role:
-        name: common
+        name: application
         tasks_from: make_data_dir
 
     - include_role:
