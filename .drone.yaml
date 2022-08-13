@@ -9,13 +9,13 @@ clone:
 
 steps:
   - name: deploy
-    image: plugins/ansible:3
+    image: docker.nexus.diesel.net/drone-ansible:2.13
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
     settings:
       playbook: .ansible/deploy.yaml
       galaxy: .ansible/roles/requirements.yaml
-      inventory: .ansible/inventories/development
+      inventory: .ansible/inventories/dev
       private_key:
         from_secret: automation_id_rsa
 trigger:
@@ -35,7 +35,7 @@ clone:
 
 steps:
   - name: deploy
-    image: plugins/ansible:3
+    image: docker.nexus.diesel.net/drone-ansible:2.13
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
       ADMIN_TOKEN:
@@ -43,10 +43,9 @@ steps:
     settings:
       playbook: .ansible/deploy.yaml
       galaxy: .ansible/roles/requirements.yaml
-      inventory: .ansible/inventories/production
+      inventory: .ansible/inventories/prod
       private_key:
         from_secret: automation_id_rsa
-      extra_vars: version=production
 
 trigger:
   branch:
