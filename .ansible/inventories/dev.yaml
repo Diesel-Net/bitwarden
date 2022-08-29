@@ -8,3 +8,8 @@ all:
   vars:
     ansible_user: automation
     ansible_python_interpreter: /usr/bin/python3
+
+    signups_allowed: yes
+    admin_token: admin
+    host: bitwarden.dev.diesel.net
+

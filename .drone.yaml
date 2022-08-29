@@ -10,12 +10,10 @@ clone:
 steps:
   - name: deploy
     image: docker.nexus.diesel.net/drone-ansible:2.13
-    environment:
-      ANSIBLE_CONFIG: .ansible/ansible.cfg
     settings:
       playbook: .ansible/deploy.yaml
       galaxy: .ansible/roles/requirements.yaml
-      inventory: .ansible/inventories/dev
+      inventory: .ansible/inventories/dev.yaml
       private_key:
         from_secret: automation_id_rsa
 trigger:
@@ -37,13 +35,16 @@ steps:
   - name: deploy
     image: docker.nexus.diesel.net/drone-ansible:2.13
     environment:
-      ANSIBLE_CONFIG: .ansible/ansible.cfg
       ADMIN_TOKEN:
         from_secret: admin_token
+      YUBICO_CLIENT_ID:
+        from_secret: yubico_client_id
+      YUBICO_SECRET_KEY:
+        from_secret: yubico_secret_key
     settings:
       playbook: .ansible/deploy.yaml
       galaxy: .ansible/roles/requirements.yaml
-      inventory: .ansible/inventories/prod
+      inventory: .ansible/inventories/prod.yaml
       private_key:
         from_secret: automation_id_rsa
 
