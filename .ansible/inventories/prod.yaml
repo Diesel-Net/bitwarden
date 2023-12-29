@@ -11,4 +11,6 @@ all:
 
     signups_allowed: yes
     admin_token: "{{ lookup('env', 'ADMIN_TOKEN') }}"
-    host: bitwarden.diesel.net
+    
+    diesel_host: bitwarden.diesel.net
+    kiwi_host: bitwarden.kiwi-labs.net
