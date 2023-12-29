@@ -4,8 +4,8 @@ version: '3.8'
 services: 
 
 
-  main:
-    image: vaultwarden/server:1.25.2
+  server:
+    image: vaultwarden/server:1.30.1
     volumes:
       - /etc/localtime:/etc/localtime
       - /etc/ssl/certs/ca-certificates.crt:/etc/ssl/certs/ca-certificates.crt
@@ -13,24 +13,34 @@ services:
     environment:
       - SIGNUPS_ALLOWED={{ signups_allowed | string | lower }}
       - ADMIN_TOKEN={{ admin_token }}
-      - DOMAIN=https://{{ host }}
+      - DOMAIN=https://{{ kiwi_host }}
       - YUBICO_CLIENT_ID={{ lookup('env', 'YUBICO_CLIENT_ID') }}
       - YUBICO_SECRET_KEY={{ lookup('env', 'YUBICO_SECRET_KEY') }}
     deploy:
       labels:
         - traefik.enable=true
+        - traefik.http.services.{{ app_name }}-frontend.loadbalancer.server.port=80
+        - traefik.http.services.{{ app_name }}-websocket.loadbalancer.server.port=3012
 
-        # web interface
-        - traefik.http.services.bitwarden-ui.loadbalancer.server.port=80
-        - traefik.http.routers.bitwarden-ui.rule=Host(`{{ host }}`)
-        - traefik.http.routers.bitwarden-ui.tls.certresolver=step-ca
-        - traefik.http.routers.bitwarden-ui.service=bitwarden-ui
-        
-        # websocket notifications
-        - traefik.http.services.bitwarden-websocket.loadbalancer.server.port=3012
-        - traefik.http.routers.bitwarden-websocket.rule=Host(`{{ host }}`) && Path(`/notifications/hub`)
-        - traefik.http.routers.bitwarden-websocket.tls.certresolver=step-ca
-        - traefik.http.routers.bitwarden-websocket.service=bitwarden-websocket
+        - traefik.http.routers.diesel-{{ app_name }}.rule=Host(`{{ diesel_host }}`)
+        - traefik.http.routers.diesel-{{ app_name }}.tls.certresolver=step-ca
+        - traefik.http.routers.diesel-{{ app_name }}.service={{ app_name }}-frontend@docker
+
+        - traefik.http.routers.diesel-{{ app_name }}-websocket.rule=Host(`{{ diesel_host }}`) && Path(`/notifications/hub`)
+        - traefik.http.routers.diesel-{{ app_name }}-websocket.tls.certresolver=step-ca
+        - traefik.http.routers.diesel-{{ app_name }}-websocket.service={{ app_name }}-websocket@docker
+
+        - traefik.http.routers.kiwi-{{ app_name }}.rule=Host(`{{ kiwi_host }}`)
+        - traefik.http.routers.kiwi-{{ app_name }}.tls.certresolver=cloudflare
+        - traefik.http.routers.kiwi-{{ app_name }}.tls.domains[0].main={{ '.'.join( kiwi_host.split('.')[1:] ) }}
+        - traefik.http.routers.kiwi-{{ app_name }}.tls.domains[0].sans=*.{{ '.'.join( kiwi_host.split('.')[1:] ) }}
+        - traefik.http.routers.kiwi-{{ app_name }}.service={{ app_name }}-frontend@docker
+
+        - traefik.http.routers.kiwi-{{ app_name }}-websocket.rule=Host(`{{ kiwi_host }}`) && Path(`/notifications/hub`)
+        - traefik.http.routers.kiwi-{{ app_name }}-websocket.tls.certresolver=cloudflare
+        - traefik.http.routers.kiwi-{{ app_name }}-websocket.tls.domains[0].main={{ '.'.join( kiwi_host.split('.')[1:] ) }}
+        - traefik.http.routers.kiwi-{{ app_name }}-websocket.tls.domains[0].sans=*.{{ '.'.join( kiwi_host.split('.')[1:] ) }}
+        - traefik.http.routers.kiwi-{{ app_name }}-websocket.service={{ app_name }}-websocket@docker
         
     networks:
       - {{ traefik_network }}

@@ -9,7 +9,7 @@ clone:
 
 steps:
   - name: deploy
-    image: docker.nexus.diesel.net/drone-ansible:2.13
+    image: docker.nexus.diesel.net/drone-ansible:7.2.0
     settings:
       playbook: .ansible/deploy.yaml
       galaxy: .ansible/roles/requirements.yaml
@@ -33,7 +33,7 @@ clone:
 
 steps:
   - name: deploy
-    image: docker.nexus.diesel.net/drone-ansible:2.13
+    image: docker.nexus.diesel.net/drone-ansible:7.2.0
     environment:
       ADMIN_TOKEN:
         from_secret: admin_token
