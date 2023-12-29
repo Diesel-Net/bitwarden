@@ -13,7 +13,7 @@ services:
     environment:
       - SIGNUPS_ALLOWED={{ signups_allowed | string | lower }}
       - ADMIN_TOKEN={{ admin_token }}
-      - DOMAIN=https://{{ host }}
+      - DOMAIN=https://{{ kiwi_host }}
       - YUBICO_CLIENT_ID={{ lookup('env', 'YUBICO_CLIENT_ID') }}
       - YUBICO_SECRET_KEY={{ lookup('env', 'YUBICO_SECRET_KEY') }}
     deploy:
